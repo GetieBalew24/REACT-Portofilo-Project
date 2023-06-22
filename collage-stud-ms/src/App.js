@@ -21,24 +21,13 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Navbar isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />
+        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}  handleLogin={handleLogin}/>
         <Routes>
-        <Route
-            path="/"
-            render={(props) => (
-              <GuestHomePage
-                {...props}
-                isLoggedIn={isLoggedIn}
-                handleLogin={handleLogin}
-              />
-            )}
-          />
-          <Route
-            path="/admin"
-            render={() =>
-              isLoggedIn ? <AdminDashboard /> : <Link to="/" />
-            }
-          />
+          {isLoggedIn ? (
+          <Route path="/admin" Component={AdminDashboard }  exact />
+          ):(
+          <Route path="/" Component={GuestHomePage} exact /> 
+          )}
         </Routes>
       </Router>
     </ThemeProvider>

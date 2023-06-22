@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import AdminDashboard from './AdminDashboard';
 
 const Navbar = ({ isLoggedIn, handleLogin, handleLogout }) => {
   const handleLoginClick = () => {
+    
     handleLogin();
   };
 
@@ -18,11 +20,11 @@ const Navbar = ({ isLoggedIn, handleLogin, handleLogout }) => {
           My App
         </Typography>
         {isLoggedIn ? (
-          <Button color="inherit" onClick={handleLogoutClick}>
+          <Button color="inherit" component={Link} to="/" onClick={handleLogoutClick}>
             Logout
           </Button>
         ) : (
-          <Button color="inherit" component={Link} to="/" onClick={handleLoginClick}>
+          <Button color="inherit" component={Link} to="/admin" onClick={handleLoginClick}>
             Login
           </Button>
         )}
