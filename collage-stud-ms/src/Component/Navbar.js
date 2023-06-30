@@ -17,16 +17,20 @@ const Navbar = ({ isLoggedIn, handleLogin, handleLogout }) => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          My App
+          BROKER APP
         </Typography>
         {isLoggedIn ? (
+          <><AdminDashboard />
           <Button color="inherit" component={Link} to="/" onClick={handleLogoutClick}>
             Logout
-          </Button>
+          </Button></>
         ) : (
-          <Button color="inherit" component={Link} to="/admin" onClick={handleLoginClick}>
-            Login
-          </Button>
+          <><Button color="inherit" component={Link} to="/admin" onClick={handleLoginClick}>
+              Login
+            </Button>
+            <Button color="inherit" component={Link} to="/Login">
+                Sign in
+              </Button></>
         )}
       </Toolbar>
     </AppBar>

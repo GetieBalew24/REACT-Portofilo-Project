@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import AdminDashboard from './AdminDashboard';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 // Child component
 const LoginForm = ({ isLoggedIn, handleLogin, handleLogout}) => {
@@ -15,7 +17,10 @@ const LoginForm = ({ isLoggedIn, handleLogin, handleLogout}) => {
       handleLogin(false);
     }
   };
-
+  const handleLoginClick = () => {
+    
+    handleLogin();
+  };
   return (
     <div>
       <h2>Login Form</h2>
@@ -37,7 +42,7 @@ const LoginForm = ({ isLoggedIn, handleLogin, handleLogout}) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <button type="submit">Login</button>
+          <Button type="submit" component={Link} to="/admin" onClick={handleLoginClick}>Login</Button>
         </form>
       )}
     </div>
